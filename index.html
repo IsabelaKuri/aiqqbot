@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Quantum Quest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Oxanium', sans-serif;
+      background: linear-gradient(135deg, #0a0f2c, #001f1f);
+      background-image: url('textura-futurista.png');
+      background-size: cover;
+      background-attachment: fixed;
+      background-blend-mode: overlay;
+      color: #cceeff;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #011522, #003d3d);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 5px 20px #00ffaa88;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      height: 50px;
+      filter: drop-shadow(0 0 10px #00ffaa);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #00ffaa;
+      text-shadow: 0 0 10px #00ffaa;
+      margin: 0 1rem;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    nav a {
+      color: #cceeff;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffaa;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: radial-gradient(circle at center, #002233 0%, #000f1a 100%);
+      border-bottom: 2px solid #00ffaa22;
+    }
+
+    .section-content {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+    }
+
+    .section img {
+      flex: 1;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0,255,255,0.4);
+    }
+
+    .section h2 {
+      color: #00ffaa;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #00ffaa;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #aaddee;
+    }
+
+    .offers {
+      position: relative;
+      padding: 6rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      background-image: url('fundo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .offers::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 10, 20, 0.8);
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+
+    .offer-box {
+      position: relative;
+      z-index: 2;
+      background: rgba(2, 44, 58, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 0 30px #00ffaa55;
+      transition: transform 0.5s;
+      text-align: center;
+    }
+
+    .offer-box:hover {
+      transform: perspective(1000px) rotateY(5deg) scale(1.05);
+    }
+
+    .offer-box img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.4);
+    }
+
+    .offer-box h3 {
+      color: #00ffaa;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-box p {
+      color: #cceeff;
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #00ffaa, #00ffee);
+      color: #001f1f;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,255,170,0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0,255,170,0.7);
+    }
+
+    .chart-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    iframe {
+      border: none;
+      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+      border-radius: 15px;
+      width: 350px;
+      height: 300px;
+    }
+
+    footer {
+      background: #001922;
+      color: #88bbcc;
+      text-align: center;
+      padding: 2rem;
+      font-size: 1rem;
+      text-shadow: 0 0 5px #00ffaa22;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section {
+        flex-direction: column;
+      }
+
+      .chart-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="qqlogo.jpeg" alt="Logo AI Quantum Quest" class="logo" />
+    <h1>AI Quantum Quest</h1>
+    <nav>
+      <a href="#qualidade">Produto</a>
+      <a href="#consultoria">Consultoria</a>
+      <a href="#produtos">Planos</a>
+      <a href="#charts">Gráficos</a>
+      <a href="#whatsapp">Contato</a>
+    </nav>
+  </header>
+
+  <section class="section" id="qualidade">
+    <img src="novo-robo.jpeg" alt="Robô Futurista" />
+    <div class="section-content">
+      <h2>A Revolução da Inteligência Artificial no Mercado</h2>
+      <p>O <strong>QQ Bot</strong> oferece alta performance e confiabilidade com algoritmos que aprendem com o mercado, executando operações com agilidade e assertividade acima da média.</p>
+    </div>
+  </section>
+
+  <section class="section" id="consultoria">
+    <div class="section-content">
+      <h2>Consultoria com Corretora Parceira</h2>
+      <p>Conte com suporte especializado para operar com segurança, com estratégias personalizadas para o seu perfil, em parceria com corretoras confiáveis.</p>
+    </div>
+    <img src="consultoria.png" alt="Consultoria Profissional" />
+  </section>
+
+  <section class="offers" id="produtos">
+    <div class="offer-box">
+      <img src="qqbot.jpeg" alt="Plano Starter" />
+      <h3>QQ Bot Starter</h3>
+      <p>Ideal para iniciantes. Suporte básico e configurações prontas.</p>
+      <p><strong>R$149,90</strong></p>
+      <a href="https://seulink.com/starter" class="btn">Adquirir Starter</a>
+    </div>
+    <div class="offer-box">
+      <img src="qqbot.jpeg" alt="Plano Premium" />
+      <h3>QQ Bot Premium</h3>
+      <p>Versão completa com IA avançada, sinais otimizados e suporte premium.</p>
+      <p><strong>R$299,90</strong></p>
+      <a href="https://seulink.com/premium" class="btn">Adquirir Premium</a>
+    </div>
+  </section>
+
+  <section class="section" id="charts">
+    <div class="section-content">
+      <h2>Gráficos ao Vivo</h2>
+      <p>Acompanhe os principais mercados em tempo real com integração ao TradingView.</p>
+    </div>
+    <div class="chart-container">
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=OANDA:EURUSD&interval=60&theme=dark"></iframe>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ:AAPL&interval=D&theme=dark"></iframe>
+      <iframe src="https://s.tradingview.com/widgetembed/?symbol=BITSTAMP:BTCUSD&interval=60&theme=dark"></iframe>
+    </div>
+  </section>
+
+  <section class="section" id="whatsapp">
+    <div class="section-content">
+      <h2>Entre em Contato</h2>
+      <p>Fale com nossa equipe para dúvidas, suporte ou consultoria via WhatsApp.</p>
+      <a href="https://wa.me/5599999999999" class="btn">Falar via WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 AI Quantum Quest - Todos os direitos reservados.
+  </footer>
+</body>
+</html>
